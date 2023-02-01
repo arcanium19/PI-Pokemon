@@ -1,13 +1,14 @@
 const { default: axios } = require('axios');
 const { Router } = require('express');
-const { getTodosLosPokemon } = require('../Handlers/getPokemon')
+const { getTodosLosPokemon, getPokemonConID } = require('../Handlers/getPokemon')
 
-const pokemonRouter = Router();
+const getPokemons = Router();
 
-pokemonRouter.get('/pokemons', getTodosLosPokemon);
+getPokemons.get('/pokemons', getTodosLosPokemon);
+getPokemons.get('pokemons/:pokeId', getPokemonConID);
 
 
 
 module.exports = {
-    pokemonRouter
+    getPokemons
 }
