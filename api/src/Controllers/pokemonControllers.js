@@ -23,7 +23,7 @@ const getAllPokemons = async ()=>{
     //Filtro info de la API
     const APIFiltrada = pokemones.map(pokemon => {
         return {
-            id: pokemon.id,
+            ID: pokemon.data.id,
             Nombre: pokemon.data.name,
             imagen: pokemon.data.sprites.other.home.front_default,
             tipo: pokemon.data.types.map(elemento => elemento.type.name),
@@ -115,7 +115,7 @@ const getPokemonByID = async (id)=>{
 
 }
 
-const createPokemon = async (name, hp, atk, def, speed, altura, peso, imgURL, tipo)=>{
+const createPokemon = async (name, hp, atk, def, speed, altura, peso, imgURL, tipos)=>{
 
     const nombreMinuscula = name.toLowerCase();
     const newPokemon = await Pokemon.create({
@@ -128,6 +128,8 @@ const createPokemon = async (name, hp, atk, def, speed, altura, peso, imgURL, ti
         Peso: peso,
         Imagen: imgURL,
     });
+
+
 
 
     if(newPokemon){
