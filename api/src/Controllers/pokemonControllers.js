@@ -6,7 +6,6 @@ const getAllPokemons = async ()=>{
     //Traer info de la API
     
     const apiUrl =  (await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40',{headers:{"Accept-Encoding":"null"}}));
-
     //const apiUrl = (await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=0`)).data;
 
     //Traer info de la DB
@@ -24,16 +23,16 @@ const getAllPokemons = async ()=>{
     //Filtro info de la API
     const APIFiltrada = pokemones.map(pokemon => {
         return {
-            ID: pokemon.order,
+            id: pokemon.id,
             Nombre: pokemon.data.name,
             imagen: pokemon.data.sprites.other.home.front_default,
-            tipo: pokemon.data.types.map(elemento => elemento.type.name)
+            tipo: pokemon.data.types.map(elemento => elemento.type.name),
         }
     })
     //Filtro la info de la API
     const DBFiltrada = infoDB.map(pokemon =>{
         return {
-            ID: pokemon.ID,
+            id: pokemon.ID,
             Nombre: pokemon.Nombre,
             Imagen: pokemon.Imagen,
             Tipo: pokemon.Tipo,
@@ -53,7 +52,7 @@ const getPokemonByName = async (name)=>{
     if(infoAPI){
         pokemonBuscadoAPI = {
 
-                ID: infoAPI.order,
+                ID: infoAPI.id,
                 Nombre: infoAPI.name,
                 Vida: infoAPI.stats[0].base_stat,
                 Ataque: infoAPI.stats[1].base_stat,
@@ -80,14 +79,27 @@ const getPokemonByName = async (name)=>{
 }
 
 const getPokemonByID = async (id)=>{
+    
     const pokeId = id;
-    const infoAPI = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)).data;
-    const infoDB = await Pokemon.findByPk(id);
-    let pokemonBuscadoAPI = [];
-    if(infoAPI){
-        pokemonBuscadoAPI = {
-
-                ID: infoAPI.order,
+    if(pokeId.includes('-')){
+        const infoDB = await Pokemon.findByPk(id);
+        return {
+                ID: infoDB.ID,
+                Nombre: infoDB.Nombre,
+                Vida: infoDB.Vida,
+                Ataque: infoDB.Ataque,
+                Defensa: infoDB.Defensa,
+                Velocidad: infoDB.Velocidad,
+                Altura: infoDB.Altura,
+                Peso: infoDB.Peso,
+                Imagen: infoDB.Imagen,
+                Tipo: infoDB.Tipo,
+                DB: infoDB.DB,
+        }
+    }else{
+        const infoAPI = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)).data;
+        return {
+                ID: infoAPI.id,
                 Nombre: infoAPI.name,
                 Vida: infoAPI.stats[0].base_stat,
                 Ataque: infoAPI.stats[1].base_stat,
@@ -98,19 +110,32 @@ const getPokemonByID = async (id)=>{
                 Imagen: infoAPI.sprites.other.home.front_default,
                 Tipo: infoAPI.types.map(elemento => elemento.type.name),
                 DB: false,
-            }    
-        
+        }
     }
-    if(!infoAPI && !infoDB){
-        return "No se ha podido encontrar un Pokemon con ese ID";
-    }
-    if(!infoDB){
-        return pokemonBuscadoAPI;
-    }
-   
 
-    const infoMixed = [...pokemonBuscadoAPI, ...infoDB];
-    return infoMixed;
+}
+
+const createPokemon = async (name, hp, atk, def, speed, altura, peso, imgURL, tipo)=>{
+
+    const nombreMinuscula = name.toLowerCase();
+    const newPokemon = await Pokemon.create({
+        Nombre: nombreMinuscula,
+        Vida: hp,
+        Ataque: atk,
+        Defensa: def,
+        Velocidad: speed,
+        Altura: altura,
+        Peso: peso,
+        Imagen: imgURL,
+    });
+
+
+    if(newPokemon){
+        return 'El pokemon se creó con éxito.'
+    }
+    else{
+        return 'Error, No se pudo crear el pokemon,'
+    }
 
 }
 
@@ -120,5 +145,6 @@ module.exports = {
     getAllPokemons,
     getPokemonByName,
     getPokemonByID,
+    createPokemon,
 }
 
