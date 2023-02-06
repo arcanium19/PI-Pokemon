@@ -77,7 +77,6 @@ const getPokemonByName = async (name)=>{
             
     infoAPIClean = await Promise.all(pokemonBuscadoAPI);
 
-    console.log(infoDB)
     if(infoDB.length>0){
         let pokemonBuscadoDB = []
         pokemonBuscadoDB.push({
@@ -105,19 +104,26 @@ const getPokemonByID = async (id)=>{
     
     const pokeId = id;
     if(pokeId.includes('-')){
-        const infoDB = await Pokemon.findByPk(id);
+        const infoDB = await Pokemon.findAll({ where: { ID: id },
+            include: {
+                model: Tipo,
+                attributes: ["Nombre"],
+                through: { attributes: []}
+            }});
+
+            console.log(infoDB)
         return {
-                ID: infoDB.ID,
-                Nombre: infoDB.Nombre,
-                Vida: infoDB.Vida,
-                Ataque: infoDB.Ataque,
-                Defensa: infoDB.Defensa,
-                Velocidad: infoDB.Velocidad,
-                Altura: infoDB.Altura,
-                Peso: infoDB.Peso,
-                Imagen: infoDB.Imagen,
-                Tipo: infoDB.Tipo,
-                DB: infoDB.DB,
+            ID: infoDB[0].dataValues.ID,
+            Nombre: infoDB[0].dataValues.Nombre,
+            Vida: infoDB[0].dataValues.Vida,
+            Ataque: infoDB[0].dataValues.Ataque,
+            Defensa: infoDB[0].dataValues.Defensa,
+            Velocidad: infoDB[0].dataValues.Velocidad,
+            Altura: infoDB[0].dataValues.Altura,
+            Peso: infoDB[0].dataValues.Peso,
+            Imagen: infoDB[0].dataValues.Imagen,
+            Tipo: infoDB[0].dataValues.Tipos.map(e=>e.dataValues).map(elemento=>elemento.Nombre),
+            DB: infoDB[0].dataValues.DB,
         }
     }else{
         const infoAPI = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)).data;
