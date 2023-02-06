@@ -30,12 +30,12 @@ const getPokemonConID = async (req, res)=>{
 }
 
 const nuevoPokemon = async (req, res)=>{
-    const { name, hp, atk, def, speed, altura, peso, imgURL, tipo } = req.body;
+    const { name, hp, atk, def, speed, altura, peso, imgURL, tipos } = req.body;
 
 
     try {
         if(name){
-            const response = await createPokemon(name, hp, atk, def, speed, altura, peso, imgURL, tipo);
+            const response = await createPokemon(name, hp, atk, def, speed, altura, peso, imgURL, tipos);
             res.status(200).send(response);
         }else{
             res.status(400).send('El campo nombre es obligatorio');
