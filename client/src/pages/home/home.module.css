@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.wrap{
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    height: 715px;
+    padding: 2rem 3rem;
+    width: 100%;
+    padding-left: 120px;
+    padding-right: 120px;
+    text-align: center;
+    color: #fff;
+    border: 0px solid #000000;
+    box-shadow: 0px 5px 10px #222;
+    backdrop-filter: blur(10px);
+  }
+
+  .leftCont{
+    width: 350px;
+  }
+
+  .rightCont{
+    width: 350px;
+  }
