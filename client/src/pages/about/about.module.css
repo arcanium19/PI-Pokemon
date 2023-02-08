@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Josefin+Sans:wght@700&family=Orbitron:wght@900&family=Roboto+Condensed:wght@300&display=swap');
+
+/* font-family: 'Exo', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Orbitron', sans-serif;
+font-family: 'Roboto Condensed', sans-serif; */
+
 .container{
     display: flex;
     flex-direction: row;
 }
 
 .wrap{
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    flex-direction: column;
     background-color: #000;
     opacity: 80%;
     display: flex;
-    justify-content: center;
+    justify-content: first baseline;
     justify-items: center;
     height: 715px;
     padding: 2rem 3rem;
@@ -19,6 +29,33 @@
     border: 0px solid #000000;
     box-shadow: 0px 5px 10px #222;
     backdrop-filter: blur(10px);
+    gap: 30px;
+  }
+
+  .presentacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .presentacion h2{
+    width: 300px;
+    text-align: justify;
+    margin-right: 25px;
+  }
+
+  .tecs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center
+  }
+  .tecs img{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
   .leftCont{

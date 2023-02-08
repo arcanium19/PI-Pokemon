@@ -6,9 +6,10 @@
 .wrap{
     /* background-color: #fff; */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     justify-items: center;
-    height: 715px;
+    height: fit-content;
     padding: 2rem 3rem;
     width: 100%;
     padding-left: 120px;

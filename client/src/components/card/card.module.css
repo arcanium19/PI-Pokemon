@@ -1,0 +1,21 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: black;
+    opacity: 80%;
+    transition: 0.6s;
+}
+
+.card:hover{
+    box-shadow: 0 0 10px #fdff8b, 0 0 10px
+    #fdff8b, 0 0 20px #fdff8b;
+}
+
+.card img{
+    width: 150px;
+    background-image: url(https://cdn.pixabay.com/photo/2019/10/04/13/52/circle-paint-4525735_960_720.png);
+}

@@ -41,6 +41,7 @@ font-family: 'Orbitron', sans-serif; */
     font-size: 15px;
     cursor: pointer;
     border-radius: 0px 12px 0px 0px;
+    transition: 0.5s;
 }
 .contA .menu1:hover{
     background: linear-gradient(to right, rgb(231, 197, 5), rgb(190, 163, 9));
@@ -67,6 +68,7 @@ font-family: 'Orbitron', sans-serif; */
     font-size: 15px;
     cursor: pointer;
     border-radius: 0px 0px 0px 0px;
+    transition: 0.5s;
 }
 .contA .menu2:hover{
     background: linear-gradient(to right, rgb(219, 187, 5), rgb(190, 163, 9));
@@ -91,6 +93,7 @@ font-family: 'Orbitron', sans-serif; */
     font-size: 15px;
     cursor: pointer;
     border-radius: 0px 0px 12px 0px;
+    transition: 0.5s;
 }
 .contA .menu3:hover{
     background: linear-gradient(to right, rgb(231, 197, 5), rgb(190, 163, 9));
