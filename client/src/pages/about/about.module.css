@@ -13,13 +13,11 @@ font-family: 'Roboto Condensed', sans-serif; */
 .wrap{
     font-family: 'Roboto Condensed', sans-serif;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    background-color: #000;
-    opacity: 80%;
-    display: flex;
     justify-content: first baseline;
     justify-items: center;
-    height: 715px;
+    height: fit-content;
     padding: 2rem 3rem;
     width: 100%;
     padding-left: 120px;
@@ -32,31 +30,94 @@ font-family: 'Roboto Condensed', sans-serif; */
     gap: 30px;
   }
 
+
+
+
   .presentacion{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+
 
   }
-
   .presentacion h2{
     width: 300px;
+    height: 300px;
     text-align: justify;
-    margin-right: 25px;
+    justify-content: center;
+    margin-right: 0px;
+    background-color: #000000;
+    opacity: 80%;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 35px;
+    border-radius: 20px 0% 0% 20px;
+    font-size: 23px;
   }
+  .presentacion img{
+    border-radius: 0px 20px 20px 0px;
+    box-shadow: #000000;
+    box-shadow: 0px 10px 3px 6px rgba(0, 0, 0, 0.2);
+
+  }
+
+
+
 
   .tecs{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #000000;
+    opacity: 70%;
+    border-radius: 20px;
   }
   .tecs img{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
   }
+
+
+
+
+  .perfil{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+  }
+  .perfil h3{
+    width: 300px;
+    text-align: justify;
+    margin-right: 0px;
+    background-color: #000000;
+    opacity: 80%;
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 35px;
+    border-radius: 0px 20px 20px 0px;
+  }
+  .perfil img{
+    border-radius: 20px 0px 0px 20px;
+    box-shadow: #000000;
+    box-shadow: 0px 5px 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .container a{
+    color: yellow;
+  }
+
+
+
+
 
   .leftCont{
     width: 350px;

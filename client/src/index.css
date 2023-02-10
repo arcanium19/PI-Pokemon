@@ -2,6 +2,7 @@ body {
   background-image: url(./images/1177510.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   position: absolute;
   width: 100%;
   height: 100%;
