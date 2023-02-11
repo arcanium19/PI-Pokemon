@@ -1,18 +1,21 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { getTypes } from '../../redux/actions';
 import style from './form.module.css'
 
 function Formulario(){
 
-    const Tipos = [
-        "fire",
-        "grass",
-        "ice",
-        "water",
-        "electric",
-        "flyer",
-        "dark",
-    ]
+    const dispatch = useDispatch();
+    
+    const tipos = useSelector(state=> state.tipos)
+
+    useEffect(()=>{
+        if(tipos.length === 0){
+        dispatch(getTypes())}
+    }, [tipos.length, dispatch])
 
 
+  
     return (
         <div className={style.container}>
             <div className={style.leftCont}></div>
@@ -65,19 +68,19 @@ function Formulario(){
                                 <div>
                                     <select name="Tipo1"id="Tipo1">
                                         <option key="none" value="none">Selecciona un tipo</option>
-                                        {Tipos.map(tipo=>{ 
-                                            return <option key={tipo} value={tipo}>{tipo}</option>
-                                        })}
+                                            {tipos.map(tipo=>{ 
+                                                return <option key={tipo.Nombre} value={tipo.Nombre}>{tipo.Nombre}</option>
+                                            })}
                                     </select>
                                 </div>
-                            </div>
-                            <div>
-                                <select name="Tipo2"id="Tipo2">
-                                    <option key="none2" value="none2">Selecciona un tipo</option>
-                                    {Tipos.map(tipo=>{ 
-                                        return <option key={tipo} value={tipo}>{tipo}</option>
-                                    })}
-                                </select>
+                                <div>
+                                    <select name="Tipo2"id="Tipo2">
+                                        <option key="none2" value="none2">Selecciona un tipo</option>
+                                            {tipos.map(tipo=>{ 
+                                                return <option key={tipo.Nombre} value={tipo.Nombre}>{tipo.Nombre}</option>
+                                            })}
+                                    </select>
+                                </div>
                             </div>
                         </form>
                     </div>

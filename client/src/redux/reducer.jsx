@@ -1,10 +1,14 @@
-import { GET_POKEMONS } from "./actions";
+import { GET_POKEMONS, GET_POKEMON_ID, GET_POKEMON_NAME, GET_POKEMON_TYPES } from "./actions";
 
 
 const initialState = {
     pokemons: [],
     tipos: [],
-    detalle: [],
+    detalle:{ 
+        Nombre: "",
+        Tipo: [],
+    },
+    busqueda: [],
     form: [],
 }
 
@@ -15,9 +19,33 @@ const rootReducer = (state = initialState, action)=>{
                 ...state,
                 pokemons: action.payload
             }
+        
+
+        case GET_POKEMON_ID:
+            return{
+                ...state,
+                detalle: action.payload
+            }
+        
+
+        case GET_POKEMON_NAME:
+            return {
+                ...state,
+                busqueda: action.payload
+            }
+      
+        
+
+        case GET_POKEMON_TYPES:
+            return {
+                ...state,
+                tipos: action.payload
+            }
+       
 
         default: 
             return {...state};
+       
     }
 }
 

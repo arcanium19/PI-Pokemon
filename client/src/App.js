@@ -10,10 +10,10 @@ function App() {
     <div className='App'>
       {location.pathname!=="/" && <NavBar />}
       <Route exact path="/" render={ ()=> <Landing /> } />
-      <Route path="/home" render={ ()=> <Home /> } />
-      <Route path="/create" render={ ()=> <Formulario /> } />
-      <Route path="/detail" render={ ()=> <Detail /> } />
-      <Route path="/info" render={ ()=> <About /> } />
+      <Route exact path="/home" render={ ()=> <Home /> } />
+      <Route exact path="/create" render={ ()=> <Formulario /> } />
+      <Route exact path="/detail/:id" render={ ()=> <Detail /> } />
+      <Route exact path="/info" render={ ()=> <About /> } />
     </div>   
  
 

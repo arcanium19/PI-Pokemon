@@ -1,8 +1,8 @@
 .card{
     display: flex;
     flex-direction: column;
-    width: 180px;
-    height: 300px;
+    width: 100%;
+    height: fit-content;
     border: 2px solid black;
     border-radius: 10px;
     background-color: black;
@@ -20,11 +20,7 @@
     background-image: url(https://cdn.pixabay.com/photo/2019/10/04/13/52/circle-paint-4525735_960_720.png);
 }
 
-.container Link{
+a{
     text-decoration: none;
     color: aliceblue;
-}
-
-.container a{
-    text-decoration: none;
 }

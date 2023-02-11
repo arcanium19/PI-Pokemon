@@ -6,7 +6,7 @@ function Card(props){
             <div className={style.like}><p>{props.ID}</p></div>
             <div className={style.image}><img src={props.Imagen} alt="pokemonImagen"/></div>
             <div className={style.name}><p>{props.Nombre.charAt(0).toUpperCase() + props.Nombre.slice(1)}</p></div>
-            <div className={style.types}><p>{props.Tipo}</p></div>
+            <div className={style.types}><p>{props.Tipo.join(' ')}</p></div>
         </div>
     )
 }
