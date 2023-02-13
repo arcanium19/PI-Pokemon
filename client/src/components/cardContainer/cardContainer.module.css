@@ -1,3 +1,8 @@
+.contpag {
+    display: flex;
+    flex-direction: column;
+}
+
 .container{
     display: flex;
     flex-direction: row;
@@ -17,4 +22,12 @@
 .container Link{
     text-decoration: none;
     color: aliceblue;
+}
+
+.selectores {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 30px;
 }

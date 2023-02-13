@@ -31,6 +31,8 @@ const getAllPokemons = async ()=>{
             Nombre: pokemon.data.name,
             Imagen: pokemon.data.sprites.other.home.front_default,
             Tipo: pokemon.data.types.map(elemento => elemento.type.name),
+            Ataque: pokemon.data.stats[1].base_stat,
+            DB: false,
         }
     })
     //Filtro la info de la API
@@ -40,6 +42,8 @@ const getAllPokemons = async ()=>{
             Nombre: pokemon.Nombre,
             Imagen: pokemon.Imagen,
             Tipo: infoDB[0].dataValues.Tipos.map(e=>e.dataValues).map(elemento=>elemento.Nombre),
+            Ataque: infoDB[0].dataValues.Ataque,
+            DB: infoDB[0].dataValues.DB,
         }
     })
 
@@ -129,7 +133,7 @@ const getPokemonByID = async (id)=>{
         const infoAPI = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)).data;
         return {
                 ID: infoAPI.id,
-                Nombre: infoAPI.name,
+                Nombre: infoAPI.name.charAt(0).toUpperCase()+infoAPI.name.slice(1),
                 Vida: infoAPI.stats[0].base_stat,
                 Ataque: infoAPI.stats[1].base_stat,
                 Defensa: infoAPI.stats[2].base_stat,
@@ -147,16 +151,17 @@ const getPokemonByID = async (id)=>{
 const createPokemon = async (name, hp, atk, def, speed, altura, peso, imgURL, tipos)=>{
 
     const nombreMinuscula = name.toLowerCase();
-    const newPokemon = await Pokemon.create({
-        Nombre: nombreMinuscula,
-        Vida: hp,
-        Ataque: atk,
-        Defensa: def,
-        Velocidad: speed,
-        Altura: altura,
-        Peso: peso,
-        Imagen: imgURL,
-    });
+
+        const newPokemon = await Pokemon.create({
+            Nombre: nombreMinuscula,
+            Vida: hp,
+            Ataque: atk,
+            Defensa: def,
+            Velocidad: speed,
+            Altura: altura,
+            Peso: peso,
+            Imagen: imgURL,
+        });
 
     // findAll({
 //     where: id:id,
@@ -167,17 +172,17 @@ const createPokemon = async (name, hp, atk, def, speed, altura, peso, imgURL, ti
 //     }
 // })
 
-    tipos.map(async (elemento) => {
-        const typesID = await getIDbyType(elemento);
-        newPokemon.addTipos(typesID);
-    })
+        tipos.map(async (elemento) => {
+            const typesID = await getIDbyType(elemento);
+            newPokemon.addTipos(typesID);
+        })
 
-    if(newPokemon){
-        return newPokemon;
-    }
-    else{
-        return 'Error, No se pudo crear el pokemon,'
-    }
+        if(newPokemon){
+            return 'Pokemon creado con exito';
+        }
+        else{
+            return 'Error, No se pudo crear el pokemon,'
+        }
 
 }
 

@@ -4,6 +4,7 @@ export const GET_POKEMONS = "GET_POKEMONS";
 export const GET_POKEMON_ID = "GET_POKEMON_ID";
 export const GET_POKEMON_NAME = "GET_POKEMON_NAME";
 export const GET_POKEMON_TYPES = "GET_POKEMON_TYPES";
+export const POST_POKEMON = "POST_POKEMON";
 
 export const getAllPokemon = ()=>{
     return async (dispatch)=>{
@@ -29,6 +30,12 @@ export const getPokemonID = (id)=>{
 export const getPokemonName = (name)=>{
     return async (dispatch)=>{
         const pokemon = (await axios.get(`http://localhost:3001/pokemons?name=${name}`)).data
-        dispatch({type: GET_POKEMON_ID, payload: pokemon})
+        dispatch({type: GET_POKEMON_NAME, payload: pokemon})
+    }
+}
+
+export const postPokemon = (newPokemon)=>{
+    return async () =>{
+        const pokemon = await axios.post("http://localhost:3001/pokemons", newPokemon);
     }
 }

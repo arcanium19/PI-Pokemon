@@ -7,16 +7,26 @@ function CardDetail(props){
 
     return (
         <div className={style.card}>
-            <div className={style.like}><p>{props.ID}</p></div>
-            <div className={style.image}><img src={props.Imagen} alt="pokemonImagen"/></div>
-            <div className={style.name}><p>{props.Nombre}</p></div>
-            <div className={style.types}><p>{props.Tipo}</p></div>
-            <div className={style.hp}><p>{props.Vida}</p></div>
-            <div className={style.atk}><p>{props.Ataque}</p></div>
-            <div className={style.def}><p>{props.Defensa}</p></div>
-            <div className={style.speed}><p>{props.Velocidad}</p></div>
-            <div className={style.altura}><p>{props.Altura}</p></div>
-            <div className={style.peso}><p>{props.Peso}</p></div>
+                <div className={style.nombre}><h1>{props.Nombre}</h1></div>
+            <div className={style.datos}>
+                <div className={style.contA}>
+                    <div className={style.image}><img src={props.Imagen} alt="pokemonImagen"/></div>
+
+                </div>
+                <div className={style.contB}>
+                    <div className={style.like}><h3>ID: {props.ID}</h3></div>
+                    <div className={style.types}><h3>Tipo: {props.Tipo}</h3></div>
+                    <div className={style.altura}><h3>Altura: {props.Altura}</h3></div>
+                    <div className={style.peso}><h3>Peso: {props.Peso}</h3></div>
+
+                </div>
+                <div className={style.contC}>
+                    <div className={style.hp}><h3>Vida: {props.Vida}</h3></div>
+                    <div className={style.atk}><h3>Ataque: {props.Ataque}</h3></div>
+                    <div className={style.def}><h3>Defensa: {props.Defensa}</h3></div>
+                    <div className={style.speed}><h3>Velocidad: {props.Velocidad}</h3></div>
+                </div>
+            </div>
             
         </div>
     )

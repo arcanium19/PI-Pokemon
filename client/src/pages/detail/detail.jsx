@@ -17,7 +17,7 @@ function Detail(){
         <div>
             <div className={style.container}>
                 <div className={style.leftCont}></div>
-                <div className={style.wrap}><h1>Bienvenidos al Detail {id}</h1><br></br>
+                <div className={style.wrap}>
                 <DetailContainer />
                 </div>
                 <div className={style.rightCont}></div>

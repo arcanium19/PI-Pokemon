@@ -32,7 +32,7 @@ const getPokemonConID = async (req, res)=>{
 const nuevoPokemon = async (req, res)=>{
     const { name, hp, atk, def, speed, altura, peso, imgURL, tipos } = req.body;
 
-
+    
     try {
         if(name){
             const response = await createPokemon(name, hp, atk, def, speed, altura, peso, imgURL, tipos);

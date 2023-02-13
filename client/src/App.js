@@ -1,5 +1,5 @@
 import './App.css';
-import { Detail, Home, Formulario, Landing, About } from './pages/index'
+import { Detail, Home, Formulario, Landing, About, Search } from './pages/index'
 import NavBar from './components/navBar/navBar.jsx'
 import { useLocation, Route } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ function App() {
       <Route exact path="/create" render={ ()=> <Formulario /> } />
       <Route exact path="/detail/:id" render={ ()=> <Detail /> } />
       <Route exact path="/info" render={ ()=> <About /> } />
+      <Route path="/search" render={ ()=> <Search /> } />
     </div>   
  
 

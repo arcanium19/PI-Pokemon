@@ -4,13 +4,10 @@ import { GET_POKEMONS, GET_POKEMON_ID, GET_POKEMON_NAME, GET_POKEMON_TYPES } fro
 const initialState = {
     pokemons: [],
     tipos: [],
-    detalle:{ 
-        Nombre: "",
-        Tipo: [],
-    },
+    detalle:[],
     busqueda: [],
-    form: [],
 }
+
 
 const rootReducer = (state = initialState, action)=>{
     switch(action.type){

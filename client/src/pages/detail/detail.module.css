@@ -4,8 +4,9 @@
 }
 
 .wrap{
-    background-color: #000;
-    opacity: 80%;
+    display: flex;
+    flex-direction: column;
+
     display: flex;
     justify-content: center;
     justify-items: center;

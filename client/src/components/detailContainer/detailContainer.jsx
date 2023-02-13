@@ -19,10 +19,11 @@ function DetailContainer(){
                         Tipo={detalle.Tipo}
                         Vida={detalle.Vida}
                         Ataque={detalle.Ataque}
+                        Defensa={detalle.Defensa}
                         Velocidad={detalle.Velocidad}
                         Altura={detalle.Altura}
                         Peso={detalle.Peso}
-                    />
+                        />
 
                 
             
