@@ -54,17 +54,12 @@ const getAllPokemons = async ()=>{
 
 const getPokemonByName = async (name)=>{
     const nameMinuscula = name.toLowerCase();
-    const infoAPI = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${nameMinuscula}`)).data
-    const infoDB = await Pokemon.findAll({ where: { Nombre: nameMinuscula },
-        include: {
-            model: Tipo,
-            attributes: ["Nombre"],
-            through: { attributes: []}
-        }})
+    console.log(nameMinuscula);
 
-
-    let pokemonBuscadoAPI = []
-    pokemonBuscadoAPI.push({
+    try {
+        const infoAPI = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${nameMinuscula}`)).data;
+        let pokemonBuscadoAPI = []
+        pokemonBuscadoAPI.push({
 
                 ID: infoAPI.id,
                 Nombre: infoAPI.name,
@@ -79,29 +74,43 @@ const getPokemonByName = async (name)=>{
                 DB: false,
             });
             
-    infoAPIClean = await Promise.all(pokemonBuscadoAPI);
+    //infoAPIClean = await Promise.all(pokemonBuscadoAPI);
+        return pokemonBuscadoAPI;
 
-    if(infoDB.length>0){
-        let pokemonBuscadoDB = []
-        pokemonBuscadoDB.push({
-                    ID: infoDB[0].dataValues.ID,
-                    Nombre: infoDB[0].dataValues.Nombre,
-                    Vida: infoDB[0].dataValues.Vida,
-                    Ataque: infoDB[0].dataValues.Ataque,
-                    Defensa: infoDB[0].dataValues.Defensa,
-                    Velocidad: infoDB[0].dataValues.Velocidad,
-                    Altura: infoDB[0].dataValues.Altura,
-                    Peso: infoDB[0].dataValues.Peso,
-                    Imagen: infoDB[0].dataValues.Imagen,
-                    Tipo: infoDB[0].dataValues.Tipos.map(e=>e.dataValues).map(elemento=>elemento.Nombre),
-                    DB: infoDB[0].dataValues.DB,
-            })
+    } catch (error) {
+        try {
+            
+    const infoDB = await Pokemon.findAll({ where : {Nombre: nameMinuscula},
+        include: {
+            model: Tipo,
+            attributes: ["Nombre"],
+            through: { attributes: []}
+        }});
+    console.log(infoDB)
+        if(infoDB.length>0){
+            let pokemonBuscadoDB = []
+            pokemonBuscadoDB.push({
+                        ID: infoDB[0].dataValues.ID,
+                        Nombre: infoDB[0].dataValues.Nombre,
+                        Vida: infoDB[0].dataValues.Vida,
+                        Ataque: infoDB[0].dataValues.Ataque,
+                        Defensa: infoDB[0].dataValues.Defensa,
+                        Velocidad: infoDB[0].dataValues.Velocidad,
+                        Altura: infoDB[0].dataValues.Altura,
+                        Peso: infoDB[0].dataValues.Peso,
+                        Imagen: infoDB[0].dataValues.Imagen,
+                        Tipo: infoDB[0].dataValues.Tipos.map(e=>e.dataValues).map(elemento=>elemento.Nombre),
+                        DB: infoDB[0].dataValues.DB,
+                    })
 
-        const infoMixed = [...pokemonBuscadoAPI, ...pokemonBuscadoDB];
-        return infoMixed;
+                const infoMixed = [ ...pokemonBuscadoDB];
+                return infoMixed;
+            }
+        } catch (error) {
+            res.status(400).json({error: error.message})
+        }
     }
-  
-    return pokemonBuscadoAPI;
+    
 }
 
 const getPokemonByID = async (id)=>{
