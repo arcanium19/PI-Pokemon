@@ -30,7 +30,9 @@ font-family: 'Roboto Condensed', sans-serif; */
     gap: 30px;
   }
 
-
+  .wrap h1{
+    font-family: 'Orbitron', sans-serif;
+  }
 
 
   .presentacion{

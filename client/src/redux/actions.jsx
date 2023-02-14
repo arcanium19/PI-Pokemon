@@ -36,6 +36,6 @@ export const getPokemonName = (name)=>{
 
 export const postPokemon = (newPokemon)=>{
     return async () =>{
-        const pokemon = await axios.post("http://localhost:3001/pokemons", newPokemon);
+        await axios.post("http://localhost:3001/pokemons", newPokemon);
     }
 }

@@ -18,7 +18,7 @@ font-family: 'Roboto Condensed', sans-serif; */
     display: flex;
     flex-direction: column;
     justify-items: center;
-    height: 715px;
+    height: fit-content;
     padding: 2rem 3rem;
     width: 100%;
     padding-left: 120px;
@@ -27,77 +27,19 @@ font-family: 'Roboto Condensed', sans-serif; */
     color: #fff;
     box-shadow: 0px 5px 10px #222;
     backdrop-filter: blur(10px);
+    justify-content: center;
   }
 
-  .containerPost{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-/* 
-  .containerform{
+  .fusion{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-around;
-    width: max-content;
-  }
-
-  .formulario{
-    display: flex;
     align-items: center;
-    justify-content: center;
-    margin: auto;
-    width: 100%;
-    max-width: 700px;
-    padding: 4.5rem 3em;
-    border-radius: 0px 5px 10px -5px rgb(0 0 0 /30%);
-    text-align: center;
   }
 
-  .form__container{
-    margin-top: 3em;
-    display: grid;
-    gap: 2.5em;
+  .fusion h1{
+    font-family: 'Orbitron', sans-serif;
   }
-
-  .form__group{
-    position: relative;
-    --color: #5757577e;
-  }
-
-  .form__input{
-    width: 100%;
-    background-color: none;
-    color: #706c6c;
-    font-size: 1rem;
-    padding: .6em .3em;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid var(--color);
-    font-family: 'Roboto Condensed', sans-serif;
-  }
-  
-  .form__input:focus + .form__label
-  .form__input:not(:placeholder-shown) + .form__label{
-    transform: translateY(-12px) scale(.7);
-    transform-origin: left top;
-    color: #3866f2;
-  }
-
-
-  .form__label{
-    color: var(--color);
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 5px;
-    transform: translateY(10px);
-    transition: transform .5s, color .3s;
-  }
- */
-
 
   .leftCont{
     width: 350px;

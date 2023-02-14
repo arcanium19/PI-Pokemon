@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPokemonName } from '../../redux/actions';
+import pokedexLogo from "../../images/pokedexprologo.png"
 import style from './navBar.module.css'
 
 
@@ -30,7 +31,7 @@ function NavBar(){
                 <Link to="/info"><button className={style.menu3}>INFO DEL PROYECTO</button></Link>
             </div>
             <div className={style.contB}>
-                <img className={style.logo} src="https://i.imgur.com/l8sIH.png" alt="logoPokedex"/>
+                <img className={style.logo} src={pokedexLogo} alt="logoPokedex"/>
             </div>
             <div className={style.contC}>
                 <div className={style.buscar}>

@@ -1,6 +1,7 @@
 import style from './about.module.css';
 import expressLogo from "../../images/expresslogo.png";
 import jony from "../../images/instaperfil.jpg"
+import henryLogo from "../../images/henrylogo.jpg"
 
 function About(){
     return(
@@ -11,7 +12,7 @@ function About(){
                 <h1>INFORMACION IMPORTANTE:</h1>
                 <div className={style.presentacion}>
                     <h2>Este proyecto individual fue realizado en menos de 2 semanas por un alumno de <a href='https://www.soyhenry.com/'>SoyHenry</a> para demostrar algunos conocimientos que fue aprendiendo a lo largo del BootCamp, utilizando las siguientes tecnologias:<br/>React - Redux - NodeJS - Express - Sequelize - PostgreSQL.</h2>
-                    <img src="https://scontent.ftuc1-2.fna.fbcdn.net/v/t39.30808-6/327366986_419213830382992_5893742950257813018_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hAScKRIbcosAX_TKqhN&tn=QQT8lhXE2p-YgeVR&_nc_ht=scontent.ftuc1-2.fna&oh=00_AfCj2lMToBEA6hVr_baFU6fAmhWwc06Ch8XSPnKOAtOosg&oe=63E94AD4" alt="HenryLogo" height="350px"/>
+                    <img src={henryLogo} alt="HenryLogo" height="350px"/>
                 </div>
                 <div className={style.tecs}>
                     <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" height="80px" alt="React"/>

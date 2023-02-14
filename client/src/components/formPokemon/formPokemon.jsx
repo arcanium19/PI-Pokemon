@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTypes, postPokemon } from "../../redux/actions";
+import style from "./formPokemon.module.css"
 
 const soloNumeros = /^\d+$/;
 const esURL = /^https?:.+.(jpg|jpeg|png|webp|avif|gif|svg)$/;
@@ -122,6 +123,7 @@ function FormularioPost(){
         }
 
         form.tipos=tipo;
+       
 
     }
 
@@ -157,62 +159,64 @@ function FormularioPost(){
 
 
     return(
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="name">Nombre: </label>
-                <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Ingresar Nombre (Obligatorio)..."/>{error.name? <p>{error.name}</p>: null}
-            </div>
-            <div>
-                <label htmlFor="hp">Vida: </label>
-                <input type="text" name="hp" value={form.hp} onChange={handleChange} placeholder="Cuanta HP tiene..."/>{error.hp? <p>{error.hp}</p>: null}
-            </div>
-            <div>
-                <label htmlFor="atk">Ataque: </label>
-                <input type="text" name="atk" value={form.atk} onChange={handleChange} placeholder="Cuanto Ataque Tiene..."/>{error.atk? <p>{error.atk}</p>: null}
-            </div>
-            <div>
-                <label htmlFor="def">Defensa: </label>
-                <input type="text" name="def" value={form.def} onChange={handleChange} placeholder="Cuanta Defensa tiene..."/>{error.def? <p>{error.def}</p>: null}
-            </div>
-            <div>
-                <label htmlFor="speed">Velocidad: </label>
-                <input type="text" name="speed" value={form.speed} onChange={handleChange} placeholder="Cuanta Velocidad tiene..."/>{error.speed? <p>{error.speed}</p>: null}
-            </div>
-            <div>
-                <label htmlFor="altura">Altura: </label>
-                <input type="text" name="altura" value={form.altura} onChange={handleChange} placeholder="Cual es su Altura..."/>{error.altura? <p>{error.altura}</p>: null}
-            </div>
-            <div>
-                <label htmlFor="peso">Peso: </label>
-                <input type="text" name="peso" value={form.peso} onChange={handleChange} placeholder="Cuanto Pesa..."/>{error.peso? <p>{error.peso}</p>: null}
-            </div>
-            <div>
-                <label htmlFor="imgURL">Imagen: </label>
-                <input type="text" name="imgURL" value={form.imgURL} onChange={handleChange} placeholder="URL aqui..."/>{error.imgURL? <p>{error.imgURL}</p>: null}
-            </div>
-            <div>
-                <label htmlFor="tipo1">Tipo: </label>
-                <select name="tipo1" onChange={handleChange}>
-                <option key="none" value="">Selecciona un tipo</option>
-                                            {tipos.map(tipo=>{ 
-                                                return <option key={tipo.Nombre} value={tipo.Nombre} >{tipo.Nombre}</option>
-                                            })}
-                </select>
-            </div>
-            <div>
-                <label htmlFor="tipo2">Tipo: </label>
-                <select name="tipo2" onChange={handleChange}>
-                <option key="none" value="">Selecciona un tipo</option>
-                                            {tipos.map(tipo=>{ 
-                                                return <option key={tipo.Nombre} value={tipo.Nombre} >{tipo.Nombre}</option>
-                                            })}
-                </select>
-            </div>
+        <div className={style.formContainer}>
+            <form onSubmit={handleSubmit} className={style.container}>
+                <div className={style.groups}>
+                    <label htmlFor="name">NOMBRE: </label>
+                    <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Ingresar Nombre (Obligatorio)..."/>{error.name? <p>{error.name}</p>: null}
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="hp">VIDA: </label>
+                    <input type="text" name="hp" value={form.hp} onChange={handleChange} placeholder="Cuanta HP tiene..."/>{error.hp? <p>{error.hp}</p>: null}
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="atk">ATAQUE: </label>
+                    <input type="text" name="atk" value={form.atk} onChange={handleChange} placeholder="Cuanto Ataque Tiene..."/>{error.atk? <p>{error.atk}</p>: null}
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="def">DEFENSA: </label>
+                    <input type="text" name="def" value={form.def} onChange={handleChange} placeholder="Cuanta Defensa tiene..."/>{error.def? <p>{error.def}</p>: null}
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="speed">VELOCIDAD: </label>
+                    <input type="text" name="speed" value={form.speed} onChange={handleChange} placeholder="Cuanta Velocidad tiene..."/>{error.speed? <p>{error.speed}</p>: null}
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="altura">ALTURA: </label>
+                    <input type="text" name="altura" value={form.altura} onChange={handleChange} placeholder="Cual es su Altura..."/>{error.altura? <p>{error.altura}</p>: null}
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="peso">PESO: </label>
+                    <input type="text" name="peso" value={form.peso} onChange={handleChange} placeholder="Cuanto Pesa..."/>{error.peso? <p>{error.peso}</p>: null}
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="imgURL">IMAGEN: </label>
+                    <input type="text" name="imgURL" value={form.imgURL} onChange={handleChange} placeholder="URL aqui..."/>{error.imgURL? <p>{error.imgURL}</p>: null}
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="tipo1">TIPO: </label>
+                    <select name="tipo1" onChange={handleChange}>
+                    <option key="none" value="">Selecciona un tipo</option>
+                                                {tipos.map(tipo=>{ 
+                                                    return <option key={tipo.Nombre} value={tipo.Nombre} >{tipo.Nombre}</option>
+                                                })}
+                    </select>
+                </div>
+                <div className={style.groups}>
+                    <label htmlFor="tipo2">TIPO: </label>
+                    <select name="tipo2" onChange={handleChange}>
+                    <option key="none" value="">Selecciona un tipo</option>
+                                                {tipos.map(tipo=>{ 
+                                                    return <option key={tipo.Nombre} value={tipo.Nombre} >{tipo.Nombre}</option>
+                                                })}
+                    </select>
+                </div>
 
-            <div>
-                <input type="submit" value="Crear Pokemon" />
-            </div>
-        </form>
+                <div>
+                    {form.name ? <input type="submit" value="CREAR POKEMON" className={style.send}/> : null}
+                </div>
+            </form>
+        </div>
     )
 
 }

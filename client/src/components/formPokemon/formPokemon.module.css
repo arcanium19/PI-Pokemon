@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@200&family=Josefin+Sans:wght@700&family=Orbitron:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+/* 
+font-family: 'Exo', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Orbitron', sans-serif; */
+
+.formContainer{
+    width: 600px;
+    height: fit-content;
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(230, 241, 255));
+    border: 0px solid black;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 1px 35px black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container label{
+    width: 300px;
+    height: 20px;
+    text-align: center;
+    text-justify: auto;
+    color: black;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.container p{
+    color: red;
+}
+
+.send{
+    margin-top: 15px;
+    background-color: rgb(24, 24, 24);
+    border-radius: 5px;
+    color: aliceblue;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    height: 40px;
+    width: 310px;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.send:hover{
+    box-shadow: 0 0 10px #9fe0ff, 0 0 10px
+    #9fe0ff, 0 0 20px #9fe0ff;
+}
+
+.groups{
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+    
+}
+
+.groups input{
+    width: 300px;
+    height: 30px;
+    background-color: none;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 15px;
+}
+
+.groups select{
+    height: 30px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 15px;
+}
