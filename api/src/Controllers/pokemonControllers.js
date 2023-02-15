@@ -15,6 +15,7 @@ const getAllPokemons = async ()=>{
                 attributes: ["Nombre"],
                 through: { attributes: []}
             }});
+
     
     let misPokes = [];
     //Aqui pushea la info de cada pokemon
@@ -23,6 +24,12 @@ const getAllPokemons = async ()=>{
 
     //me trae todos los pokemons
     const pokemones = await Promise.all(misPokes)
+
+    salida = [];
+    for (let i = 0; i < infoDB.length; i++) {
+        infoDB[i].dataValues.Tipos = infoDB[i].dataValues.Tipos.map((e) => e.Nombre);
+        salida.push(infoDB[i].dataValues);
+      }
 
     //Filtro info de la API
     const APIFiltrada = pokemones.map(pokemon => {
@@ -36,12 +43,13 @@ const getAllPokemons = async ()=>{
         }
     })
     //Filtro la info de la API
-    const DBFiltrada = infoDB.map(pokemon =>{
+    const DBFiltrada = salida.map(pokemon =>{
         return {
             ID: pokemon.ID,
             Nombre: pokemon.Nombre,
             Imagen: pokemon.Imagen,
-            Tipo: infoDB[0].dataValues.Tipos.map(e=>e.dataValues).map(elemento=>elemento.Nombre),
+            //Tipo: infoDB[0].dataValues.Tipos.map(e=>e.dataValues).map(elemento=>elemento.Nombre),
+            Tipo: pokemon.Tipos,
             Ataque: infoDB[0].dataValues.Ataque,
             DB: infoDB[0].dataValues.DB,
         }
@@ -54,7 +62,6 @@ const getAllPokemons = async ()=>{
 
 const getPokemonByName = async (name)=>{
     const nameMinuscula = name.toLowerCase();
-    console.log(nameMinuscula);
 
     try {
         const infoAPI = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${nameMinuscula}`)).data;
@@ -74,7 +81,6 @@ const getPokemonByName = async (name)=>{
                 DB: false,
             });
             
-    //infoAPIClean = await Promise.all(pokemonBuscadoAPI);
         return pokemonBuscadoAPI;
 
     } catch (error) {
@@ -86,7 +92,7 @@ const getPokemonByName = async (name)=>{
             attributes: ["Nombre"],
             through: { attributes: []}
         }});
-    console.log(infoDB)
+
         if(infoDB.length>0){
             let pokemonBuscadoDB = []
             pokemonBuscadoDB.push({
@@ -124,7 +130,6 @@ const getPokemonByID = async (id)=>{
                 through: { attributes: []}
             }});
 
-            console.log(infoDB)
         return {
             ID: infoDB[0].dataValues.ID,
             Nombre: infoDB[0].dataValues.Nombre,
@@ -172,14 +177,6 @@ const createPokemon = async (name, hp, atk, def, speed, altura, peso, imgURL, ti
             Imagen: imgURL,
         });
 
-    // findAll({
-//     where: id:id,
-//     include: {
-//         model: Tipo,
-//         attributes: ["nombre"],
-//         through: { attributes: []}
-//     }
-// })
 
         tipos.map(async (elemento) => {
             const typesID = await getIDbyType(elemento);

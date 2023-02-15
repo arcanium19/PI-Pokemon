@@ -15,6 +15,7 @@ function CardContainer(){
 
   const [page, setPage] = useState(1);
   const items = 12;
+  const max = pokemons.length / items;
   const [selectorType, setSelectorType] = useState({
     tipos: "0",
     az: "0",
@@ -23,7 +24,6 @@ function CardContainer(){
   })
 
   
-  const max = pokemons.length / items;
 
 
   const showPokemon = ()=>{

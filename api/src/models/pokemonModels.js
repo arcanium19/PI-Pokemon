@@ -45,10 +45,6 @@ module.exports = (sequelize) => {
 
     },
 
-    // Tipo:{
-    //   type: DataTypes.ARRAY(DataTypes.STRING),
-    // },
-
     DB:{
       type: DataTypes.BOOLEAN,
       allowNull: false,

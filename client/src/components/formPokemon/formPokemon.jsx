@@ -31,6 +31,7 @@ function FormularioPost(){
         imgURL: "",
         tipo1: "",
         tipo2: "",
+        tipos: "",
     })
 
     const [error, setError] = useState({
@@ -44,6 +45,7 @@ function FormularioPost(){
         imgURL: "",
         tipo1: "",
         tipo2: "",
+        tipos: "",
     })
 
 
@@ -213,7 +215,7 @@ function FormularioPost(){
                 </div>
 
                 <div>
-                    {form.name ? <input type="submit" value="CREAR POKEMON" className={style.send}/> : null}
+                    {error.name || !form.name ? null : <input type="submit" value="CREAR POKEMON" className={style.send}/>}
                 </div>
             </form>
         </div>
